@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f825d5a3-1390-4644-930c-c54720a8478a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/localize.inc.php" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../lock/.idea/.name" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../lock/.idea/deployment.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../lock/.idea/encodings.xml" afterPath="" />
