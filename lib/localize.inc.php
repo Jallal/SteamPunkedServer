@@ -18,7 +18,7 @@ return function(Site $site) {
     $site->dbConfigure('mysql:host=mysql-user.cse.msu.edu;dbname=elhazzat',
         'elhazzat',       // Database user
         'superstudent',     // Database password
-        'SteampunkedUser');            // Table prefix
+        '');            // Table prefix
 
 
 };
