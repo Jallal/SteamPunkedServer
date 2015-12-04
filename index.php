@@ -1,5 +1,2 @@
-<html>
-<head>
-	<title>Welcome to the Steampunked Server</title>
-</head>
-</html>
+<?php
+	echo 'Welcome to the Steampunked Server';

@@ -7,15 +7,15 @@
  */
 
 class User {
-    private $id;        ///< ID for this user.xml in the user.xml table
-    private $userid;    ///< User-supplied ID
+    private $Id;        ///< ID for this user.xml in the user.xml table
+    private $username;    ///< User-supplied ID
     private $password;      ///< What we call you by
 
 
 
     public function __construct($row) {
-        $this->id = $row['id'];
-        $this->userid = $row['userid'];
+        $this->Id = $row['Id'];
+        $this->username = $row['username'];
         $this->password = $row['password'];
 
     }
@@ -26,7 +26,7 @@ class User {
      */
     public function getId()
     {
-        return $this->id;
+        return $this->Id;
     }
 
     /**
@@ -34,7 +34,7 @@ class User {
      */
     public function getUserid()
     {
-        return $this->userid;
+        return $this->username;
     }
 
     /**

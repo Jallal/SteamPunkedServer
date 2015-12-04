@@ -14,21 +14,15 @@ class NewUsers extends Table{
     }
 
 
-    public function newUser($userid,$password1, $password2) {
+    public function newUser($userid,$password) {
 
 
 
-
-        // Ensure the passwords are valid and equal
-        if(strlen($password1) < 8) {
+        if(strlen($password) < 8) {
             echo "Passwords must be at least 8 characters long";
             return null;
         }
 
-        if($password1 !== $password2) {
-            echo "Passwords are not equal";
-            return null;
-        }
         // Ensure we have no duplicate user ID or email address
         $users = new Users($this->site);
         if($users->exists($userid)) {
@@ -47,18 +41,13 @@ values(?, ?)
 SQL;
 
         $statement = $this->pdo()->prepare($sql);
-        $statement->execute(array($userid,$password1));
+        $statement->execute(array($userid,$password));
+
+
+        $message = "success";
+
+    return $message;
 
     }
-
-
-
-
-
-
-
-
-
-
 
 }

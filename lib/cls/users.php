@@ -16,9 +16,11 @@ class Users extends Table {
 
     public function login($user, $password) {
 
+
+
         $sql =<<<SQL
 SELECT * from $this->tableName
-where userid=?
+where username=?
 SQL;
 
         $pdo = $this->pdo();
@@ -33,13 +35,10 @@ SQL;
         $pass = $row['password'];
 
 
-
-
         // Ensure it is correct
-        if($password !== $pass) {
+        if($password !==$pass) {
             return null;
         }
-
 
 
         return new User($row);
@@ -47,20 +46,16 @@ SQL;
 
 
 
-
-
-
-
-    public function exists($user)
+    public function exists($username)
     {
         $sql = <<<SQL
 SELECT * from $this->tableName
-where userid=?
+where username=?
 SQL;
 
         $pdo = $this->pdo();
         $statement = $pdo->prepare($sql);
-        $statement->execute(array($user));
+        $statement->execute(array($username));
         if ($statement->rowCount() === 0) {
             return false;
         } else {
