@@ -15,6 +15,9 @@ class NewGame extends Table{
 
     public function newGame($userid,$token,$game) {
 
+        $this->RemoveGameFromRecord($userid);
+
+
         $sql2 = <<<SQL
 INSERT INTO gcm(token,username)
 values(?, ?)
@@ -43,6 +46,17 @@ SQL;
             $message = null;
             return $message;
         }
+
+    }
+
+    public function RemoveGameFromRecord($userId){
+
+        $sql = <<<SQL
+DELETE  FROM  $this->tableName
+where playerOneId=? OR playerTwoId=?
+SQL;
+        $statement = $this->pdo()->prepare($sql);
+        $statement->execute(array($userId,$userId));
 
     }
 

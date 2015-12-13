@@ -6,7 +6,7 @@ unset($_SESSION['newuser-error']);
 
 if(isset($_REQUEST['username']) && isset($_REQUEST['password'])) {
 
-$nu = new NewGame($site);
+$nu = new NewUsers($site);
 $msg = $nu->newUser($_REQUEST['username'], $_REQUEST['password']);
 
 if($msg !== null) {

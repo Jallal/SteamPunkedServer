@@ -8,24 +8,18 @@
 
 class Quit extends Table{
 
+
+
     public function __construct(Site $site) {
         parent::__construct($site, "SteampunkedGame");
 
     }
 
-
-
-
-
-
-
     public function NotifyPlayer($userId, $user2){
-
         $sql = <<<SQL
 SELECT token FROM  gcm
 where username=?
 SQL;
-
         $statement = $this->pdo()->prepare($sql);
         $statement->execute(array($userId));
 
@@ -64,6 +58,9 @@ SQL;
 
 // Close connection
         curl_close($ch);
+
+        $this->RemoveGameFromRecord($userId);
+
     }
 
 
@@ -83,11 +80,15 @@ SQL;
         }
 
         foreach ($result as $g) {
+
+
             $user1 = $g->getPlayerOne();
             $user2  = $g->getPlayerTwo();
+
             if($user1!==$userId){
                 $this->NotifyPlayer($user1, $user2);
             }
+
             if($user2!==$userId){
                 $this->NotifyPlayer($user2, $user1);
             }
@@ -95,4 +96,22 @@ SQL;
         }
     }
 
+
+
+    public function RemoveGameFromRecord($userId){
+
+        $sql = <<<SQL
+DELETE * FROM  $this->tableName
+where playerOneId=? OR playerTwoId=?
+SQL;
+        $statement = $this->pdo()->prepare($sql);
+        $statement->execute(array($userId,$userId));
+
+    }
+
+
+
+
+
 }
+

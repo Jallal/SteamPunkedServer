@@ -16,7 +16,6 @@ $localize = require 'localize.inc.php';
 if(is_callable($localize)) {
     $localize($site);
 }
-
 // Start the session system
 session_start();
 $user = null;

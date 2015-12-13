@@ -16,6 +16,8 @@ if(isset($_REQUEST['username'])) {
 
     $message =  $quit->QuitGame($_REQUEST['username']);
 
+    unset($_SESSION['user']);
+
 
     if($message !== null) {
         //$message = "success";

@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Created by PhpStorm.
@@ -20,6 +19,4 @@ return function(Site $site) {
         'elhazzat',       // Database user
         'superstudent',     // Database password
         '');            // Table prefix
-
-
 };

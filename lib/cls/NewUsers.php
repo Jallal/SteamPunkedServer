@@ -17,7 +17,6 @@ class NewUsers extends Table{
     public function newUser($userid,$password) {
 
 
-
         if(strlen($password) < 8) {
             echo "Passwords must be at least 8 characters long";
             return null;

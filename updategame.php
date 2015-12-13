@@ -9,7 +9,9 @@
 $login = true;
 require_once "lib/site.inc.php";
 
+
 if(isset($_REQUEST['username']) && isset($_REQUEST['game'])) {
+
 
     $game = new UpdateGame($site);
 

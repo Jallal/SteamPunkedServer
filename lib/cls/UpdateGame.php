@@ -6,6 +6,7 @@
  * Time: 6:44 PM
  */
 
+
 class UpdateGame extends Table{
 
 
@@ -28,7 +29,7 @@ SQL;
 
         $gcmIds = array();
         foreach($statement as $row) {
-            echo $row['token'];
+           // echo $row['token'];
             $gcmIds[] = $row['token'];
         }
 
@@ -49,15 +50,15 @@ SQL;
 
         $fields['registration_ids'] = $gcmIds;
         $fields['data'] = $data;
-        echo '<pre>';
-        print_r($fields);
+        //echo '<pre>';
+       // print_r($fields);
 
         curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $fields ) );
 
 // Execute HTTP post
         $result = curl_exec($ch);
-        print_r($result);
-        echo '</pre>';
+       // print_r($result);
+       //// echo '</pre>';
 
 // Close connection
         curl_close($ch);
@@ -112,7 +113,7 @@ where playerOneId=? OR playerTwoId=?
 SQL;
 
     $statement = $this->pdo()->prepare($sql);
-    if ($statement->execute(array($game,$userId,$userId))) {
+    if ($statement->execute(array($game ,$userId,$userId))) {
 
         $this->NotifyMe($userId);
         $message = "success";

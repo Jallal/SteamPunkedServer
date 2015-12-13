@@ -18,6 +18,8 @@ class JoinGame extends Table
     public function joinGame($userid,$gameId,$token)
     {
 
+        $this->RemoveGameFromRecord($userid);
+
         $sql2 = <<<SQL
 INSERT INTO gcm(token,username)
 values(?, ?)
@@ -158,6 +160,17 @@ SQL;
             }
 
         }
+    }
+
+    public function RemoveGameFromRecord($userId){
+
+        $sql = <<<SQL
+DELETE  FROM  $this->tableName
+where playerOneId=? OR playerTwoId=?
+SQL;
+        $statement = $this->pdo()->prepare($sql);
+        $statement->execute(array($userId,$userId));
+
     }
 
 }
